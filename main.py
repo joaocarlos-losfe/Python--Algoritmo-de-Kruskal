@@ -34,7 +34,7 @@ class Grafo:
         self.grafo = []
         self.nos = []
 
-        self.AGM = []
+        self.AGM = [] #Arvore Geradora Minima
 
     def add_aresta(self, v1, v2, peso):
         self.grafo.append([v1, v2, peso])
