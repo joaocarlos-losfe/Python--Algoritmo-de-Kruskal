@@ -1,6 +1,6 @@
 class Conjuntos:
     def __init__(self, vertices):
-        self.numero_verticesertices = vertices
+        self.numero_vertices = vertices
         self.parent = {}
 
         for v in vertices:
