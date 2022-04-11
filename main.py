@@ -5,6 +5,7 @@ class Conjuntos:
 
         for v in vertices:
             self.parent[v] = v
+
         self.classificados = dict.fromkeys(vertices, 0)
     
     def buscar(self, item):
@@ -13,7 +14,7 @@ class Conjuntos:
         else:
             return self.buscar(self.parent[item])
     
-    def unir_conjuntos(self, c1, c2):
+    def ordenar(self, c1, c2):
         raiz1 = self.buscar(c1)
         raiz2 = self.buscar(c2)
 
@@ -63,9 +64,112 @@ class Grafo:
             if x != y:
                 j += 1
                 self.AGM.append([v1,v2,peso])
-                conjunto.unir_conjuntos(x,y)
+                conjunto.ordenar(x,y)
 
+print("\nExemplo do slide: ")
 
+grafo = Grafo(9)
+grafo.add_vertice("A")
+grafo.add_vertice("B")
+grafo.add_vertice("C")
+grafo.add_vertice("D")
+grafo.add_vertice("E")
+grafo.add_vertice("F")
+grafo.add_vertice("G")
+grafo.add_vertice("H")
+grafo.add_vertice("I")
+grafo.add_aresta("A", "B", 4)
+grafo.add_aresta("A", "H", 8)
+grafo.add_aresta("B", "A", 4)
+grafo.add_aresta("B", "H", 11)
+grafo.add_aresta("B", "C", 8)
+grafo.add_aresta("C", "B", 8)
+grafo.add_aresta("C", "D", 7)
+grafo.add_aresta("C", "I", 2)
+grafo.add_aresta("C", "F", 4)
+grafo.add_aresta("D", "C", 7)
+grafo.add_aresta("D", "E", 9)
+grafo.add_aresta("D", "F", 14)
+grafo.add_aresta("E", "D", 9)
+grafo.add_aresta("E", "F", 10)
+grafo.add_aresta("F", "D", 14)
+grafo.add_aresta("F", "E", 10)
+grafo.add_aresta("F", "C", 4)
+grafo.add_aresta("F", "G", 2)
+grafo.add_aresta("G", "F", 2)
+grafo.add_aresta("G", "I", 6)
+grafo.add_aresta("G", "H", 1)
+grafo.add_aresta("I", "C", 2)
+grafo.add_aresta("I", "G", 6)
+grafo.add_aresta("I", "H", 7)
+grafo.add_aresta("H", "A", 8)
+grafo.add_aresta("H", "B", 11)
+grafo.add_aresta("H", "I", 7)
+grafo.add_aresta("H", "G", 1)
+grafo.kruskal()
+grafo.mostrar_solucao()
+
+#Exercicio
+
+print("\nExercicio: ")
+grafo = None
+grafo = Grafo(8)
+grafo.add_vertice("A")
+grafo.add_vertice("B")
+grafo.add_vertice("C")
+grafo.add_vertice("D")
+grafo.add_vertice("E")
+grafo.add_vertice("F")
+grafo.add_vertice("G")
+grafo.add_vertice("H")
+
+grafo.add_aresta("A", "B", 3)
+grafo.add_aresta("A", "C", 5)
+grafo.add_aresta("A", "D", 2)
+grafo.add_aresta("A", "H", 10)
+
+grafo.add_aresta("B", "A", 3)
+grafo.add_aresta("B", "C", 5)
+grafo.add_aresta("B", "D", 8)
+grafo.add_aresta("B", "E", 4)
+grafo.add_aresta("B", "G", 6)
+grafo.add_aresta("B", "H", 6)
+
+grafo.add_aresta("C", "A", 5)
+grafo.add_aresta("C", "B", 5)
+grafo.add_aresta("C", "E", 1)
+grafo.add_aresta("C", "F", 7)
+grafo.add_aresta("C", "G", 9)
+
+grafo.add_aresta("D", "A", 2)
+grafo.add_aresta("D", "B", 8)
+grafo.add_aresta("D", "E", 12)
+grafo.add_aresta("D", "H", 14)
+
+grafo.add_aresta("E", "B", 4)
+grafo.add_aresta("E", "C", 1)
+grafo.add_aresta("E", "D", 12)
+grafo.add_aresta("E", "G", 15)
+
+grafo.add_aresta("F", "C", 7)
+grafo.add_aresta("F", "H", 9)
+
+grafo.add_aresta("G", "B", 6)
+grafo.add_aresta("G", "C", 9)
+grafo.add_aresta("G", "E", 15)
+grafo.add_aresta("G", "H", 3)
+
+grafo.add_aresta("H", "A", 10)
+grafo.add_aresta("H", "B", 6)
+grafo.add_aresta("H", "D", 14)
+grafo.add_aresta("H", "F", 9)
+grafo.add_aresta("H", "H", 3)
+
+grafo.kruskal()
+grafo.mostrar_solucao()
+
+print("\nImplementação: ")
+grafo = None
 
 grafo = Grafo(8)
 grafo.add_vertice("A")
@@ -114,50 +218,3 @@ grafo.add_aresta("G", "H", 305)
 
 grafo.kruskal()
 grafo.mostrar_solucao()
-
-"""
-
-grafo = Grafo(9)
-grafo.add_vertice("A")
-grafo.add_vertice("B")
-grafo.add_vertice("C")
-grafo.add_vertice("D")
-grafo.add_vertice("E")
-grafo.add_vertice("F")
-grafo.add_vertice("G")
-grafo.add_vertice("H")
-grafo.add_vertice("I")
-
-grafo.add_aresta("A", "B", 4)
-grafo.add_aresta("A", "H", 8)
-grafo.add_aresta("B", "A", 4)
-grafo.add_aresta("B", "H", 11)
-grafo.add_aresta("B", "C", 8)
-grafo.add_aresta("C", "B", 8)
-grafo.add_aresta("C", "D", 7)
-grafo.add_aresta("C", "I", 2)
-grafo.add_aresta("C", "F", 4)
-grafo.add_aresta("D", "C", 7)
-grafo.add_aresta("D", "E", 9)
-grafo.add_aresta("D", "F", 14)
-grafo.add_aresta("E", "D", 9)
-grafo.add_aresta("E", "F", 10)
-grafo.add_aresta("F", "D", 14)
-grafo.add_aresta("F", "E", 10)
-grafo.add_aresta("F", "C", 4)
-grafo.add_aresta("F", "G", 2)
-grafo.add_aresta("G", "F", 2)
-grafo.add_aresta("G", "I", 6)
-grafo.add_aresta("G", "H", 1)
-grafo.add_aresta("I", "C", 2)
-grafo.add_aresta("I", "G", 6)
-grafo.add_aresta("I", "H", 7)
-grafo.add_aresta("H", "A", 8)
-grafo.add_aresta("H", "B", 11)
-grafo.add_aresta("H", "I", 7)
-grafo.add_aresta("H", "G", 1)
-
-grafo.kruskal()
-grafo.mostrar_solucao()
-
-"""
