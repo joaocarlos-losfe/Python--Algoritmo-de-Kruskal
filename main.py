@@ -42,7 +42,7 @@ class Grafo:
     def add_vertice(self, vertice):
         self.nos.append(vertice)
 
-    def mostrar_solucao(self,v1, v2, peso):
+    def mostrar_solucao(self):
         for v1, v2, peso in self.AGM:
             print("%s - %s: %s" % (v1, v2, peso))
     
@@ -65,7 +65,7 @@ class Grafo:
                 self.AGM.append([v1,v2,peso])
                 conjunto.unir_conjuntos(x,y)
 
-        self.mostrar_solucao(v1,v2,peso)
+    
 
 grafo = Grafo(8)
 grafo.add_vertice("A")
@@ -113,3 +113,49 @@ grafo.add_aresta("F", "H", 205)
 grafo.add_aresta("G", "H", 305)
 
 grafo.kruskal()
+grafo.mostrar_solucao()
+
+"""
+grafo = Grafo(9)
+grafo.add_vertice("A")
+grafo.add_vertice("B")
+grafo.add_vertice("C")
+grafo.add_vertice("D")
+grafo.add_vertice("E")
+grafo.add_vertice("F")
+grafo.add_vertice("G")
+grafo.add_vertice("H")
+grafo.add_vertice("I")
+
+grafo.add_aresta("A", "B", 4)
+grafo.add_aresta("A", "H", 8)
+grafo.add_aresta("B", "A", 4)
+grafo.add_aresta("B", "H", 11)
+grafo.add_aresta("B", "C", 8)
+grafo.add_aresta("C", "B", 8)
+grafo.add_aresta("C", "D", 7)
+grafo.add_aresta("C", "I", 2)
+grafo.add_aresta("C", "F", 4)
+grafo.add_aresta("D", "C", 7)
+grafo.add_aresta("D", "E", 9)
+grafo.add_aresta("D", "F", 14)
+grafo.add_aresta("E", "D", 9)
+grafo.add_aresta("E", "F", 10)
+grafo.add_aresta("F", "D", 14)
+grafo.add_aresta("F", "E", 10)
+grafo.add_aresta("F", "C", 4)
+grafo.add_aresta("F", "G", 2)
+grafo.add_aresta("G", "F", 2)
+grafo.add_aresta("G", "I", 6)
+grafo.add_aresta("G", "H", 1)
+grafo.add_aresta("I", "C", 2)
+grafo.add_aresta("I", "G", 6)
+grafo.add_aresta("I", "H", 7)
+grafo.add_aresta("H", "A", 8)
+grafo.add_aresta("H", "B", 11)
+grafo.add_aresta("H", "I", 7)
+grafo.add_aresta("H", "G", 1)
+
+grafo.kruskal()
+
+"""
