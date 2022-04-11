@@ -65,7 +65,7 @@ class Grafo:
                 self.AGM.append([v1,v2,peso])
                 conjunto.unir_conjuntos(x,y)
 
-    
+
 
 grafo = Grafo(8)
 grafo.add_vertice("A")
@@ -116,6 +116,7 @@ grafo.kruskal()
 grafo.mostrar_solucao()
 
 """
+
 grafo = Grafo(9)
 grafo.add_vertice("A")
 grafo.add_vertice("B")
@@ -157,5 +158,6 @@ grafo.add_aresta("H", "I", 7)
 grafo.add_aresta("H", "G", 1)
 
 grafo.kruskal()
+grafo.mostrar_solucao()
 
 """
