@@ -45,7 +45,7 @@ class Grafo:
 
     def mostrar_solucao(self):
         for v1, v2, peso in self.AGM:
-            print("%s - %s: %s" % (v1, v2, peso))
+            print(f"{v1} - {v2}: {peso}")
     
     def kruskal(self):
         i = 0 
@@ -54,17 +54,18 @@ class Grafo:
         conjunto = Conjuntos(self.nos)
         self.grafo = sorted(self.grafo, key=lambda item: item[2]) #ordena o conjunto
         
-        while j < self.numero_vertices - 1:
+        while j < self.numero_vertices - 1: 
 
             v1, v2, peso = self.grafo[i]
-            i += 1
-            x = conjunto.buscar(v1)
-            y = conjunto.buscar(v2)
+            i += 1 
+            #verifica se fecha um circuito
+            x = conjunto.buscar(v1) #aresta atual
+            y = conjunto.buscar(v2) # arestas anteriores
 
-            if x != y:
+            if x != y: #se não fechar, é valido pra estar na AGM
                 j += 1
                 self.AGM.append([v1,v2,peso])
-                conjunto.ordenar(x,y)
+                conjunto.ordenar(x,y) 
 
 print("\nExemplo do slide: ")
 
