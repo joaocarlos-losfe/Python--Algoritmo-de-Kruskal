@@ -1,12 +1,12 @@
 class Conjuntos:
-    def __init__(self, vertices):
-        self.numero_vertices = vertices
+    def __init__(self, nos):
+        self.nos = nos
         self.parent = {}
 
-        for v in vertices:
+        for v in nos:
             self.parent[v] = v
 
-        self.classificados = dict.fromkeys(vertices, 0)
+        self.classificados = dict.fromkeys(nos, 0)
     
     def buscar(self, item):
         if self.parent[item] == item:
